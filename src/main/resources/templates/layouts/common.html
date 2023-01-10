@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+    	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	
+    	<title>Common</title>
+	</head>
+	<body>
+		<!--Website Header-->
+		<div th:fragment="header">
+			<!--Displays dark-colored navbar + removes rounded corners-->	
+			<nav class="navbar navbar-inverse" style="border-radius: 0; margin:0px; position:fixed; z-index:3; width:100vw; 
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);">
+				<!--Alternate, responsive design for smaller devices-->
+				<div class="navbar-header">
+					<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+				<!--Navbar content-->
+				<div id="navbarCollapse" class="collapse navbar-collapse">
+					<!--Logo and website name (positioned left)-->
+					<ul class="nav navbar-nav navbar-left">
+						<li><img th:src="@{/images/mb_logo.png}" style="margin: 5px 0 5px 0;"/></li>		
+						<li><a class="navbar-brand" href="location.href='/'" style="margin: 5px 0 5px 0; color:white; font-size:40px">monkeybusiness</a></li>					
+					</ul>
+					<!--Login and registration options (positioned right)-->
+					<ul class="nav navbar-nav navbar-right">
+						<li><button onclick="location.href='/login/'" class="btn-1" role="button">Log-in</button></li>	
+						<li><form th:action="@{/logout}" method="POST">
+    						<input class="btn-1" value="Log-out" type="submit"></input>
+						</form></li >	
+						<li><button onclick="location.href='/product/'" class="btn-1" role="button">Product</button></li>	
+						<li><button class="btn-1" role="button">Account</li>		
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<!--Footer (currently obselete)-->	
+		<div th:fragment="footer"></div>
+	</body>
+</html>

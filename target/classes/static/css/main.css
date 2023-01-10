@@ -1,0 +1,257 @@
+*{
+    margin: 0;
+}
+
+/* Creates transparent scrollbar */
+body {
+  overflow: overlay;
+}
+::-webkit-scrollbar {
+  width:12px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.15);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,.3);
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* Fade-in animation utilized by pop-up widget */
+@keyframes pop-up{
+    from
+    { 
+        opacity: 0; 
+        transform: translate(0px, 20px);
+    }
+    to
+    { 
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+}
+
+@font-face{
+	font-family: 'Poppins';
+	src: url("../fonts/Poppins-Regular.ttf");
+}
+
+.btn-1{
+	border-style: solid;
+	border-radius: 20px;
+	border-width: 2px;
+	border-color: white;
+	background-color:black;
+	color:white;
+	margin: 10px 10px 10px 10px;
+	display: inline-block;
+}
+.btn-1:hover{
+	border-color: rgb(255, 255, 128);
+	color: rgb(255, 255, 128);
+}
+
+.btn-2{
+	color: black;
+	background-color:rgb(244, 244, 244);
+	border-radius: 5px;
+	font-size: large;
+	font-family: 'Poppins', sans-serif;
+	width:30%;
+	height:50px;
+	border:none;
+	margin: 5px 5px 5px 5px
+}
+.btn-2:hover{
+	background-color: rgb(255, 255, 215);
+}
+
+.btn-3{
+	color: black;
+	background-color:rgb(244, 244, 244);
+	border-radius: 5px;
+	font-size: large;
+	font-family: 'Poppins', sans-serif;
+	width:30%;
+	height:50px;
+	border:none;
+	margin: 5px 5px 5px 5px
+}
+.btn-3:hover{
+	background-color: rgb(255, 168, 168);
+}
+
+/* Class only containing animation */
+.pop-up{
+	animation: pop-up .5s;
+}
+
+/* Animated widget that displays individual items + login and register page */
+.pop-up-widget{
+    animation: pop-up .5s;
+
+    background-color: rgb(255, 255, 255, .9);
+
+	display:flex;
+	flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+
+    width: 25vw;
+    height: 60vh;
+    
+    z-index:2;
+}
+.pop-up-widget header{
+	color:gray;
+	margin: 0px 0px 0px 0px;
+    width:100%;
+    height: 20%;
+}
+.pop-up-widget h1{
+    text-align: center;
+    font-size: 4vw;
+    color: gray;
+}
+.pop-up-widget p{
+    text-align: center;
+    font-size: medium;
+    background-color: rgb(255, 255, 255, .9);
+    color: gray;
+}
+.pop-up-widget button{
+	border-style: solid;
+	border-radius: 20px;
+	color:black;
+	margin: 10px 10px 10px 10px;
+	display: inline-block;
+	width:60%;
+	text-decoration: none;
+}
+/* Textbox that accepts input (username, password, etc.) */
+.pop-up-widget input{
+	border-style: none;
+	border-bottom-style: solid;
+	background-color:rgb(255, 255, 255, .0);
+}
+
+/* Background that pop-up-widget displays over  */
+.widget-background{
+    background-image: none;
+    background-size: cover;
+	
+	/* Centers content */
+	display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+    z-index:0;
+}
+
+#products-main{
+	font-family: 'Poppins', sans-serif;
+	
+    display:flex;
+    flex-wrap: wrap;
+    float:right;
+
+	background-color:rgb(255, 255, 255, 0);
+    
+    margin: 100px 0 50px 0;
+
+    width:100vw;
+}
+
+#dark-filter{
+    display:none;
+    z-index: -3;
+    background-color: rgb(0, 0, 0, .5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+
+    align-items: center;
+    justify-content: center;
+}
+
+/* Displays product details */
+#product-details{
+	display:none;
+	position:fixed;
+
+	font-family: 'Poppins', sans-serif;
+    background: white;
+
+	width:70vw;
+	height:80vh;
+	z-index:-2;
+	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+#product-details img{
+    float: left;
+    height:100%;
+}
+#product-details h1{
+    font-size: 3vw;
+}
+#product-details h2{
+    font-size: 2vw;
+}
+#product-details p{
+    font-size: 1vw;
+}
+#product-details hr{
+    width: 80%;
+}
+#product-details aside{
+    float:right;
+    height:90%;
+    width:53%;
+
+    margin: 20px 20px 20px 5px;
+}
+
+.product-card{
+    margin: 20px 35px 20px 35px;
+    width:300px;
+    height:500px;
+    border: solid 1px rgb(0, 0, 0, .1)
+}
+
+.product-card img{
+	margin: 0px 0px 10px 0px;
+	width:100%;
+}
+.product-card h5{
+	font-size: large;
+	font-weight: bold;
+}
+.product-card h6{
+	font-size: large;
+}
+.product-card:hover{
+	width:308px;
+    height:508px;
+    margin: 16px 31px 16px 31px;
+}
+
+.exit-button{
+    position:relative;
+    width:30px;
+    height: 30px;
+    margin: 10px 10px 10px 10px;
+    float:right;
+    border:none;
+    color:rgb(151, 151, 151);
+    background-color:white;
+    font-weight: 700;
+}
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/menuLayout">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Main Menu</title>
+	</head>
+
+	<body style='background-color:rgb(255, 255, 245)'>
+	    <!--Displays main menu-->
+		<div layout:fragment="content">            
+    		<main id="products-main" align="center" class="container d-flex flex-wrap">
+    			<!--If user is not logged in, display empty main menu-->
+				<div th:if="${products.empty}">
+					<p align="center">There are currently no products available.</p>
+				</div>
+				<!--Else, display each product-->
+				<div th:each="product : ${products}">
+					<!--Product card-->
+					<div class="product-card" th:onclick="javascript:toggle_product_details([[${product.getName()}]],
+					[[${product.getDescription()}]], [[${product.getSize()}]], [[${product.getPrice()}]], [[${product.getProductId()}]]);">
+						<img th:src="@{https://loremflickr.com/300/400/{product}(product=${product.getName()})}">
+						<h5 th:text="${product.getName()}"></h5>
+						<h6 th:text="${product.getPrice()}"></h6>
+					</div>
+				</div>
+    		</main>
+
+    		<!--Displays product information - Appears upon selecting an item-->
+    		<div id="dark-filter">
+	            <div id="product-details" class="pop-up">
+	            	<!--Exit button-->
+	            	<button class="exit-button" onclick=toggle_product_details()><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+</svg></button>
+	            	<!--Product information-->
+	                <img id="product-img" src="#">
+	                
+	                <!-- Product details -->
+	                <aside id="product-info">
+	                    <h1 id="product-name">Product name</h1><br>
+	                    <hr>
+	                    <h2 id="product-size">Product size</h2><h2 id="product-price">Product price</h2><br>
+	                    <p id="product-description">Product description</p><br>
+	                    <button id="update-product" class="btn-2">Update</button>
+	                    <button id="delete-product" class="btn-3">Delete</button>
+	                </aside>
+	            </div>
+	        </div>
+		</div>	
+	</body>
+</html>

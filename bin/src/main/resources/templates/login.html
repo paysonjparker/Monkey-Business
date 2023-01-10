@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/menuLayout">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Login</title>
+	</head>
+	<body>
+		<!--Displays login module-->
+		<div layout:fragment="content">
+			<h1>Login</h1>
+			<form action="#" th:action="@{doLogin}" th:object="${userModel}" method="post">
+				<table>
+					<tr>
+						<!--Username input-->
+						<td>Username:</td><td><input type="text" th:field="*{username}"></input></td>
+						<td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</h5></td>
+					</tr>
+					<tr>
+						<!--Password input-->
+						<td>Password:</td><td><input type="password" th:field="*{password}"></input></td><td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="Submit"/></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

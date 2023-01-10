@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/menuLayout">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Registration</title>
+	</head>
+	<body>
+		<!--Displays Registration module-->
+		<div layout:fragment="content">
+			<h1>Registration</h1>
+			<form action="#" th:action="@{doRegister}" th:object="${userModel}" method="post">
+			<table>
+				<tr>
+					<td>
+						User Name:
+					</td>
+					<td>
+						<input type="text" th:field="*{username}"></input></td><td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</h5></td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						E-mail:
+					</td>
+					<td>
+						<input type="text" th:field="*{email}"></input></td><td><h5 style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</h5></td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Phone:
+					</td>
+					<td>
+						<input type="text" th:field="*{phoneNum}"></input></td><td><h5 style="color:red" th:if="${#fields.hasErrors('phoneNum')}" th:errors="*{phoneNum}">Phone Number Error</h5></td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Password:
+					</td>
+					<td>
+						<input type="password" th:field="*{password}"></input></td><td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Confirm Password:
+					</td>
+					<td>
+						<input type="password" th:field="*{password}"></input></td><td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Username Error</h5></td>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="Submit" />
+					</td>
+				</tr>
+			
+			</table>
+			</form>
+		</div>
+	</body>
+</html>

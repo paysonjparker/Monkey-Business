@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+    	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>Common</title>
+	</head>
+	<body>
+		<!--Website Header-->
+		<div th:fragment="header">
+			<!--Displays dark-colored navbar-->	
+			<nav class="navbar navbar-inverse">
+				<!--Alternate, responsive design for smaller devices-->
+				<div class="navbar-header">
+					<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+				<!--Navbar content-->
+				<div id="navbarCollapse" class="collapse navbar-collapse">
+					<!--Logo and website name (positioned left)-->
+					<ul class="nav navbar-nav navbar-left">
+						<li><img th:src="@{/images/monkey1 (2).png}"/></li>	
+							
+						<li><h2 style="color:darkgray">MONKEY BUSINESS</h2></li>					
+					</ul>
+					<!--Login and registration options (positioned right)-->
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/">Main Menu</a></li>
+						<li><a href="/login/">Login</a></li>		
+						<li><a href="/register/">Register</a></li>					
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<!--Footer (currently obselete)-->	
+		<div th:fragment="footer"></div>
+	</body>
+</html>
