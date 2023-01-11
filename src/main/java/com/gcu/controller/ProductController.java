@@ -61,7 +61,7 @@ public class ProductController
 			// Returns product list
 			model.addAttribute("products", service.getProducts());	
 			
-			return "index";
+			return "redirect:/";
 		}
 	}
 	
@@ -103,7 +103,7 @@ public class ProductController
 			// Returns updated product list
 			model.addAttribute("products", service.getProducts());	
 			
-			return "index";
+			return "redirect:/";
 		}
 	}
 	
@@ -121,6 +121,6 @@ public class ProductController
 		
 		// Gets updated product list
 		model.addAttribute("products", service.getProducts());
-		return "index";
+		return "redirect:/";
 	}
 }

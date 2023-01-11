@@ -66,6 +66,6 @@ public class RegisterController
 		model.addAttribute("products", productBusinessService.getProducts());	
 		
 		// Returns main menu view
-		return "index";
+		return "redirect:/";
 	}
 }
