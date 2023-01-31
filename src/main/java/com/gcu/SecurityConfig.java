@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		http.csrf().disable()
 		.authorizeRequests()
 		// Anyone may access these pages:
-	        .antMatchers("/*", "/login/*", "/register/*", "/js/*", "/css/*", "/images/*").permitAll()
+	        .antMatchers("/*", "/login/*", "/register/*", "/js/*", "/css/*", "/images/*", "/product/*", "/index/*").permitAll()
 	        .anyRequest().authenticated()
 	        .and()
 		.formLogin()
