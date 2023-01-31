@@ -38,7 +38,7 @@ public class ProductDataService implements DataAccessInterface<ProductModel>
 	@Override
 	public List<ProductModel> findAll()
 	{
-		String sql = "SELECT * FROM monkeybusiness.product";
+		String sql = "SELECT * FROM product";
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		try 
 		{
@@ -65,7 +65,7 @@ public class ProductDataService implements DataAccessInterface<ProductModel>
 	@Override
 	public ProductModel findById(int id)
 	{
-		String sql = "SELECT * FROM monkeybusiness.product WHERE productId LIKE " + id;
+		String sql = "SELECT * FROM product WHERE productId LIKE " + id;
 		// Initializes product as empty model
 		ProductModel product = null;
 		try 
@@ -89,7 +89,7 @@ public class ProductDataService implements DataAccessInterface<ProductModel>
 	@Override
 	public boolean create(ProductModel product)
 	{
-		String sql = "INSERT INTO monkeybusiness.product (name, description, size, price) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO product (name, description, size, price) VALUES (?, ?, ?, ?)";
 		try
 		{
 		   // Execute SQL Insert
@@ -113,7 +113,7 @@ public class ProductDataService implements DataAccessInterface<ProductModel>
 	public boolean update(ProductModel product)
 	{
 		// SQL Update string
-		String sql = String.format("UPDATE monkeybusiness.product SET name='%s', description='%s', size='%s', price=%f WHERE productId=%d;",
+		String sql = String.format("UPDATE product SET name='%s', description='%s', size='%s', price=%f WHERE productId=%d;",
 				product.getName(),
 				product.getDescription(),
 				product.getSize(),
@@ -136,7 +136,7 @@ public class ProductDataService implements DataAccessInterface<ProductModel>
 	@Override
 	public boolean delete(ProductModel product)
 	{
-		String sql = "DELETE FROM monkeybusiness.product WHERE productId=" + product.getProductId();
+		String sql = "DELETE FROM product WHERE productId=" + product.getProductId();
 		try
 		{
 		   // Execute SQL

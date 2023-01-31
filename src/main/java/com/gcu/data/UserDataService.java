@@ -39,7 +39,7 @@ public class UserDataService implements DataAccessInterface<UserModel>
 	@Override
 	public List<UserModel> findAll()
 	{
-		String sql = "SELECT * FROM monkeybusiness.user";
+		String sql = "SELECT * FROM user";
 		List<UserModel> users = new ArrayList<UserModel>();
 		try 
 		{
@@ -71,7 +71,7 @@ public class UserDataService implements DataAccessInterface<UserModel>
 	@Override
 	public UserModel findByUsername(String username) 
 	{
-		String sql = String.format("SELECT * FROM monkeybusiness.user WHERE username='%s'", username);
+		String sql = String.format("SELECT * FROM user WHERE username='%s'", username);
 		// Initializes product as empty model
 		UserModel user = null;
 		try 
@@ -95,7 +95,7 @@ public class UserDataService implements DataAccessInterface<UserModel>
 	@Override
 	public boolean create(UserModel user)
 	{
-		String sql = "INSERT INTO monkeybusiness.user (username, password, email, "
+		String sql = "INSERT INTO user (username, password, email, "
 				+ "phoneNum) VALUES (?, ?, ?, ?)";
 		try
 		{
