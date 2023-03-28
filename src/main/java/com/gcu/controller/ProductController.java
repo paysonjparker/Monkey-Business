@@ -2,6 +2,8 @@ package com.gcu.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,9 @@ import com.gcu.model.ProductModel;
 @RequestMapping("/product")
 public class ProductController 
 {
+
+	Logger logger = LoggerFactory.getLogger(ProductController.class);
+
 	@Autowired
 	ProductBusinessService service;
 	
@@ -33,8 +38,13 @@ public class ProductController
 	@GetMapping("/")
 	public String display(Model model) 
 	{
+		logger.info("==========> ENTER ProductController.display() at " + "/product");
+
 		//display the product create page.
 		model.addAttribute("productModel", new ProductModel());
+
+		logger.info("==========> EXIT ProductController.display() at " + "/product");
+
 		return "product";
 	}
 	
@@ -48,6 +58,8 @@ public class ProductController
 	@PostMapping("/doCreate")
 	public String doCreate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
 	{
+		logger.info("==========> ENTER ProductController.doCreate() at " + "/product/doCreate");
+
 		// If login credentials are invalid, stay at register view
 		if (bindingResult.hasErrors())
 		{
@@ -59,8 +71,10 @@ public class ProductController
 			service.addProduct(productModel);
 			
 			// Returns product list
-			model.addAttribute("products", service.getProducts());	
-			
+			model.addAttribute("products", service.getProducts());
+
+			logger.info("==========> EXIT ProductController.doCreate() at " + "/product/doCreate");
+
 			return "redirect:/";
 		}
 	}
@@ -74,8 +88,13 @@ public class ProductController
 	@GetMapping("/update")
 	public String update(Model model, @RequestParam(name="id", required = true) Integer productId) 
 	{
+		logger.info("==========> ENTER ProductController.update() at " + "/product/update");
+
 		//display the product create page.
 		model.addAttribute("productModel", service.getProductById(productId));
+
+		logger.info("==========> EXIT ProductController.update() at " + "/product/update");
+
 		return "updateProduct";
 	}
 	
@@ -89,6 +108,8 @@ public class ProductController
 	@PostMapping("/doUpdate")
 	public String doUpdate(@Valid ProductModel productModel, BindingResult bindingResult, Model model)
 	{
+		logger.info("==========> ENTER ProductController.doUpdate() at " + "/product/doUpdate");
+
 		// If product credentials are invalid, stay at update view
 		if (bindingResult.hasErrors())
 		{
@@ -101,8 +122,10 @@ public class ProductController
 			service.update(productModel);
 			
 			// Returns updated product list
-			model.addAttribute("products", service.getProducts());	
-			
+			model.addAttribute("products", service.getProducts());
+
+			logger.info("==========> ENTER ProductController.doUpdate() at " + "/product/doUpdate");
+
 			return "redirect:/";
 		}
 	}
@@ -116,11 +139,16 @@ public class ProductController
 	@GetMapping("/delete")
 	public String delete(Model model, @RequestParam(name="id", required = true) Integer productId) 
 	{
+		logger.info("==========> ENTER ProductController.delete() at " + "/product/delete");
+
 		// Delets product
 		service.delete(service.getProductById(productId));
 		
 		// Gets updated product list
 		model.addAttribute("products", service.getProducts());
+
+		logger.info("==========> EXIT ProductController.delete() at " + "/product/delete");
+
 		return "redirect:/";
 	}
 }

@@ -1,5 +1,7 @@
 package com.gcu.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,8 @@ import com.gcu.business.ProductBusinessService;
 @Controller
 public class MenuController 
 {
+	Logger logger = LoggerFactory.getLogger(MenuController.class);
+
 	// Retrieves products
 	@Autowired
 	ProductBusinessService productBusinessService;
@@ -27,9 +31,13 @@ public class MenuController
 	@GetMapping("/")
 	public String display(Model model) 
 	{
+		logger.info("==========> ENTER MenuController.display() at " + "/");
+
 		// If user is logged in, display products
 		model.addAttribute("products", productBusinessService.getProducts());
-		
+
+		logger.info("==========> EXIT MenuController.display() at " + "/");
+
 		return "index";
 	}
 }
